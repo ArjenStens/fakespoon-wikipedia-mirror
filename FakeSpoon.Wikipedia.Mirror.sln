@@ -1,16 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Application", "FakeSpoon.Wikipedia.Mirror.Application\FakeSpoon.Wikipedia.Mirror.Application.csproj", "{5A665E56-C08D-4EFA-A4FD-93073250422E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Application", "src/FakeSpoon.Wikipedia.Mirror.Application\FakeSpoon.Wikipedia.Mirror.Application.csproj", "{5A665E56-C08D-4EFA-A4FD-93073250422E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Domain", "FakeSpoon.Wikipedia.Mirror.Domain\FakeSpoon.Wikipedia.Mirror.Domain.csproj", "{DD5033A5-FA1D-4EC4-AAE2-F706AA3E074A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Domain", "src/FakeSpoon.Wikipedia.Mirror.Domain\FakeSpoon.Wikipedia.Mirror.Domain.csproj", "{DD5033A5-FA1D-4EC4-AAE2-F706AA3E074A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Infrastructure", "FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj", "{5D562876-C913-4258-94D8-713BFB4FC108}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Infrastructure", "src/FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj", "{5D562876-C913-4258-94D8-713BFB4FC108}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{5F529DF4-E894-448D-B945-7CF6B83CFA6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE286405-26CB-4E83-B516-8FA19D40D529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Web", "FakeSpoon.Wikipedia.Mirror.Web\FakeSpoon.Wikipedia.Mirror.Web.csproj", "{778CC9D2-7560-4DDC-8EAA-A123B75D6205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Web", "src/FakeSpoon.Wikipedia.Mirror.Web\FakeSpoon.Wikipedia.Mirror.Web.csproj", "{778CC9D2-7560-4DDC-8EAA-A123B75D6205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
