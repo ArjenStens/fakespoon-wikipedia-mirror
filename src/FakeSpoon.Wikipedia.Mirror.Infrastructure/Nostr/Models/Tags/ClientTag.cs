@@ -2,7 +2,7 @@ using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
 
 namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
 
-public class ClientTag : INostrTag
+public class ClientTag: INostrTag
 {
     public ClientTag(string clientName, PublicKey clientAddress, string? identifier, RelayAddress? relayHint)
     {
@@ -10,18 +10,19 @@ public class ClientTag : INostrTag
         RelayHint = relayHint;
         Identifier = identifier;
     }
-
-    public string Name { get; } = "client";
-
-    public string ClientName { get; set; }
     
-    public PublicKey ClientAddress { get; set; }
-    
-    public string Identifier { get; set; }
-    
-    public RelayAddress? RelayHint { get; set; }
+    public ClientTag(){}
 
+    public string Name => StaticTagName;
+    public static string StaticTagName => "client";
+
+    public string ClientName { get; init; }
+    
+    public PublicKey ClientAddress { get; init; }
+    
+    public string Identifier { get; init; }
+    
+    public RelayAddress? RelayHint { get; init; }
     
     public string[] Rendered => new[] { Name, $"{ClientName}:{ClientAddress}:{Identifier}", RelayHint?.Value ?? "" };
-
 }

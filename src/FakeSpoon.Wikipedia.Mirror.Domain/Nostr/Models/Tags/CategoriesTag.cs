@@ -2,7 +2,7 @@ using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
 
-public class CategoriesTag : INostrTag
+public class CategoriesTag: INostrTag
 {
     public CategoriesTag(IEnumerable<string> categories)
     {
