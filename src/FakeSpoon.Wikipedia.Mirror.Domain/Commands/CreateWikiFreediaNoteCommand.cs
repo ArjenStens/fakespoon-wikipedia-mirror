@@ -1,8 +1,11 @@
+using System.Text.RegularExpressions;
 using FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;
+using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Utils;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Cqe.Base;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
+using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
 using Microsoft.Extensions.Logging;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;
@@ -19,20 +22,21 @@ public class CreateWikiFreediaNoteCommandHandler(
     {
         Logger.LogInformation("page");
 
-        
-
         var categories = GetCategories(cmd.WikiPage.Revision.Text.Value);
         var markdownContent = GetMarkdownContent(cmd.WikiPage.Revision.Text.Value);
+
+        markdownContent += $"\n [View on legacy Wikipedia]({WikiPediaUtils.UrlFromTitle(cmd.WikiPage.Title)})";
         var note = new Note
         {
             Kind = Kind.LongFormContent,
             Tags = new INostrTag[]
             {
-                new IdentifierTag($"wiki-{cmd.WikiPage.Id}"),
+                new IdentifierTag(AsTopicName(cmd.WikiPage.Title)),
                 new TitleTag(cmd.WikiPage.Title),
-                new CategoriesTag(categories)
+                new CategoriesTag(categories),
+                new ClientTag("FakeSpoon-WikiMirror", new PublicKey("bla"), "fakespoon-wiki-mirror", null)
             },
-            Content = null
+            Content = new(markdownContent)
         };
         
         return Task.CompletedTask;
@@ -62,7 +66,7 @@ public class CreateWikiFreediaNoteCommandHandler(
         return categories;
     }
     
-    public IEnumerable<string> GetMarkdownContent(string wikiText)
+    public string GetMarkdownContent(string wikiText)
     {
         var markdownLines = new List<string>();
 
@@ -83,10 +87,45 @@ public class CreateWikiFreediaNoteCommandHandler(
                 markdownLines.Add($"## {currentLine[2..(currentLine.Length - 2)]}"); // minus closing ==);
                 continue;
             }
-            
-            markdownLines.Add(currentLine);
+
+            var lineContent = GetLineContent(currentLine);
+            markdownLines.Add(lineContent);
         }
         
-        return markdownLines;
+        return string.Join("\n",markdownLines);
     }
+
+    public string GetLineContent(string wikiLine)
+    {
+        // References
+        // Reverse loop to prevent indexes from moving during iteration!
+        var referencePattern = "<ref[\\s\\S]*?<\\/ref>";
+        foreach (Match match in Regex.Matches(wikiLine, referencePattern, RegexOptions.IgnoreCase).Reverse())
+        {
+            var fullMatch = match.Value;
+            wikiLine = wikiLine.Replace(fullMatch, "[omitted_ref]"); // TODO: parse this
+        }
+        
+        // Wikilinks
+        var wikiLinkPattern = "\\[\\[[\\s\\S]*?\\]\\]";
+        foreach (Match match in Regex.Matches(wikiLine, wikiLinkPattern, RegexOptions.IgnoreCase).Reverse())
+        {
+            var fullMatch = match.Value;
+            var matchContent = fullMatch[2..(fullMatch.Length - 2)];
+            wikiLine = wikiLine.Replace(fullMatch, $"[[{AsTopicName(matchContent)}|{matchContent}]]");
+        }
+        
+        // Bold text
+        var boldPattern = "\\'\\'\\'[\\s\\S]*?\\'\\'\\'";
+        foreach (Match match in Regex.Matches(wikiLine, boldPattern, RegexOptions.IgnoreCase).Reverse())
+        {
+            var fullMatch = match.Value;
+            var matchContent = fullMatch[3..(fullMatch.Length - 3)];
+            wikiLine = wikiLine.Replace(fullMatch, $"**{matchContent}**");
+        }
+
+        return wikiLine;
+    }
+    
+    private string AsTopicName(string input) => input.ToLower().Replace(" ", "-");
 }
