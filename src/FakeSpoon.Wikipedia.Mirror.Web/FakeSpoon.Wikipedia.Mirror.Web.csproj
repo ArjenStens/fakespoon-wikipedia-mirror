@@ -9,7 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1"/>
+        <PackageReference Include="Carter" Version="8.2.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
@@ -20,7 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Application\FakeSpoon.Wikipedia.Mirror.Application.csproj" />
       <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj" />
+      <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Domain\FakeSpoon.Wikipedia.Mirror.Domain.csproj" />
     </ItemGroup>
 
 </Project>

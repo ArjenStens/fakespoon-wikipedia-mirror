@@ -6,4 +6,14 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Carter" Version="8.2.1" />
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Domain\FakeSpoon.Wikipedia.Mirror.Domain.csproj" />
+      <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

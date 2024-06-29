@@ -7,9 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\" />
       <Folder Include="Events\" />
       <Folder Include="Queries\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
 </Project>

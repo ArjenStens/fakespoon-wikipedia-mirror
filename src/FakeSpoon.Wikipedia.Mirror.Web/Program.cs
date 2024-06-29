@@ -21,7 +21,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// WikipediaModule.ne
 app.UseHttpsRedirection();
+
+app.AddCustomWebApplicationResources();
 
 app.Run();
