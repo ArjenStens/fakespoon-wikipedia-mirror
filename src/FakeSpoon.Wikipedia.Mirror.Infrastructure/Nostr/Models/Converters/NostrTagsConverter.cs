@@ -1,6 +1,5 @@
 using System.Reflection;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using JsonException = Newtonsoft.Json.JsonException;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;

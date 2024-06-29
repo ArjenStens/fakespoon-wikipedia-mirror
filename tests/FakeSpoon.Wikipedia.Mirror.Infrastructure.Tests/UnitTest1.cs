@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
 using Newtonsoft.Json;
 
