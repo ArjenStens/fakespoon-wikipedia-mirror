@@ -10,5 +10,5 @@ public class MediaWikiContainer
 public class MediaWiki
 {
     [JsonProperty("page")]
-    public Page[] Pages { get; set; }
+    public WikiPage[] Pages { get; set; }
 }

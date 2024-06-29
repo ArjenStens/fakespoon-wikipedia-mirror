@@ -1,5 +1,4 @@
 using System.Xml;
-using System.Xml.Serialization;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Cqe.Base;
 using Microsoft.Extensions.Logging;
@@ -24,12 +23,12 @@ public class PostWikipediaDumpCommandHandler(
 
 
         var tasks = pages
-            .Select(page => handler.Execute(new() { Page = page }))
+            .Select(page => handler.Execute(new() { WikiPage = page }))
             .ToList();
         return Task.WhenAll(tasks);
     }
 
-    private IEnumerable<Page> ExtractPages(XmlDocument wikipediaDump)
+    private IEnumerable<WikiPage> ExtractPages(XmlDocument wikipediaDump)
     {
         var wiki = wikipediaDump.GetElementsByTagName("mediawiki").Item(0); 
         var wikiJson = JsonConvert.SerializeXmlNode(wiki);
