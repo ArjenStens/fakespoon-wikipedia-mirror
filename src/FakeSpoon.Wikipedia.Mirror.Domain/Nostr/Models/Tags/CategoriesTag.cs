@@ -13,5 +13,5 @@ public class CategoriesTag: INostrTag
 
     private IEnumerable<string> Categories { get; set; }
 
-    public string[] Rendered => new List<string> { Name }.Concat(Categories).ToArray();
+    public string[] ToArray => new List<string> { Name }.Concat(Categories).ToArray();
 }

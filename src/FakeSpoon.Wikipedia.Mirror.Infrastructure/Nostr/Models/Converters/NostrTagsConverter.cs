@@ -1,5 +1,6 @@
 using System.Reflection;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using JsonException = Newtonsoft.Json.JsonException;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
@@ -13,10 +14,9 @@ namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Converters
             .Where(t => typeof(INostrTag).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
             .ToDictionary(t => (string)t.GetProperty("StaticTagName").GetValue(null), t => t);
         
-
         public override void WriteJson(JsonWriter writer, IEnumerable<INostrTag>? tags, JsonSerializer serializer)
         {
-            var tagArray = tags.Select(tag => tag.Rendered).ToList();
+            var tagArray = tags.Select(tag => tag.ToArray).ToList();
             JsonConvert.SerializeObject(tagArray);
         }
 
@@ -41,9 +41,8 @@ namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Converters
                     Console.WriteLine("Unknown tag name: {0}", tagName);
                     continue;
                 }
-                  
-
-                INostrTag? tagInstance = (INostrTag)Activator.CreateInstance(tagType)!;
+                
+                var tagInstance = (INostrTag) tagType.GetMethod("FromArray").Invoke(null, new []{tag});
                 tags.Add(tagInstance);
             }
             return tags;

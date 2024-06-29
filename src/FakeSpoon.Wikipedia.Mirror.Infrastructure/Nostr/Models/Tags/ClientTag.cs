@@ -24,5 +24,10 @@ public class ClientTag: INostrTag
     
     public RelayAddress? RelayHint { get; init; }
     
-    public string[] Rendered => new[] { Name, $"{ClientName}:{ClientAddress}:{Identifier}", RelayHint?.Value ?? "" };
+    public string[] ToArray => new[] { Name, $"{ClientName}:{ClientAddress}:{Identifier}", RelayHint?.Value ?? "" };
+    
+    public static INostrTag FromArray(IEnumerable<string> tagArray)
+    {
+        return new ClientTag();
+    }
 }

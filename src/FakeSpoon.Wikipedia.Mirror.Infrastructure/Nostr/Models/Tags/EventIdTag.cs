@@ -21,6 +21,11 @@ public class EventIdTag: INostrTag
     public RelayAddress? RelayHint { get; init; }
 
     
-    public string[] Rendered => new[] { Name, EventId.Value, RelayHint?.Value ?? "" };
+    public string[] ToArray => new[] { Name, EventId.Value, RelayHint?.Value ?? "" };
+    
+    public static INostrTag FromArray(IEnumerable<string> tagArray)
+    {
+        return new IdentifierTag();
+    }
 
 }

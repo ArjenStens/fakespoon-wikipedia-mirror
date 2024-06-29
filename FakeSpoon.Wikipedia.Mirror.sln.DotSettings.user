@@ -7,6 +7,6 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2a165e3f_002D152e_002D455f_002D8870_002D89db31f646be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Test1&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Should_DeserializeTags&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

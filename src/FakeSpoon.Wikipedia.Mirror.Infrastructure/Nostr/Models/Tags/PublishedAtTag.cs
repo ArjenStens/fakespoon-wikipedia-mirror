@@ -16,5 +16,10 @@ public class PublishedAtTag: INostrTag
     
     public DateTime PublishedAt { get; init; }
     
-    public string[] Rendered => new[] { Name, ((DateTimeOffset)PublishedAt).ToUnixTimeSeconds().ToString() };
+    public string[] ToArray => new[] { Name, ((DateTimeOffset)PublishedAt).ToUnixTimeSeconds().ToString() };
+    
+    public static INostrTag FromArray(IEnumerable<string> tagArray)
+    {
+        return new PublishedAtTag();
+    }
 }

@@ -16,6 +16,10 @@ public class IdentifierTag: INostrTag
 
     public string Value { get; init; }
     
-    public string[] Rendered => new[] { Name, Value };
+    public string[] ToArray => new[] { Name, Value };
     
+    public static INostrTag FromArray(IEnumerable<string> tagArray)
+    {
+        return new IdentifierTag();
+    }
 }

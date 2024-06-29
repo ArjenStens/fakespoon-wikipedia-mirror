@@ -20,5 +20,10 @@ public class PubKeyTag: INostrTag
     public RelayAddress? RelayHint { get; init; }
 
     
-    public string[] Rendered => new[] { Name, PubKey.Value, RelayHint?.Value ?? "" };
+    public string[] ToArray => new[] { Name, PubKey.Value, RelayHint?.Value ?? "" };
+    
+    public static INostrTag FromArray(IEnumerable<string> tagArray)
+    {
+        return new PubKeyTag();
+    }
 }
