@@ -1,42 +1,57 @@
 
 
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json.Serialization;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Converters;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
+using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Utils;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+using JsonConverter = Newtonsoft.Json.JsonConverter;
 using PublicKey = FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Keys.PublicKey;
 
 namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
 
 public class NostrEvent
 {
+    public string Id => ComputeId();
 
-    public string Id { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public PublicKey PubKey { get; set; }
     public required Kind Kind { get; set; }
-
-    [JsonConverter(typeof(NostrTagsConverter))]
+    
+    [Newtonsoft.Json.JsonConverter(typeof(NostrTagsConverter))]
     public required IEnumerable<INostrTag> Tags { get; set; }
 
     public required string Content { get; set; }
 
     public Signature Sig { get; set; }
 
-    // private byte[] ComputeIdBytes()
-    // {
-    //     var clone = DeepClone("<<leading_zero>>", null);
-    //     var json = JsonConvert.SerializeObject(renderedEvent, ArraySettings);
-    //
-    //     // we need to include id=0 as a number instead of string
-    //     json = ReplaceValue(json, "\"<<leading_zero>>\"", "0");
-    //
-    //     var hash = HashExtensions.GetSha256(json);
-    //     return hash;
-    // }
-
+    
+    
+    private string ComputeId()
+    {
+        var array = new List<dynamic>()
+        {
+            0,
+            PubKey.Hex,
+            ((DateTimeOffset)CreatedAt).ToUnixTimeSeconds(),
+            Kind,
+            Tags.Select(t => t.ToArray()),
+            Content
+        };
+        var json = JsonConvert.SerializeObject(array, ArraySettings);
+        
+        var stringBytes = Encoding.UTF8.GetBytes(json);
+        var hashBytes = SHA256.HashData(stringBytes);
+        var hashHex = hashBytes.ToHex();
+        return hashHex;
+    }
+    
     public static JsonSerializerSettings Settings => new()
     {
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,

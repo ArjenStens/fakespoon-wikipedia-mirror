@@ -1,8 +1,8 @@
 namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
 
-public record PublicKey : NoteValue
+public record PublicKeyValue : NoteValue
 {
-    public PublicKey(string value)
+    public PublicKeyValue(string value)
     {
         // TODO: validate
         Value = value;

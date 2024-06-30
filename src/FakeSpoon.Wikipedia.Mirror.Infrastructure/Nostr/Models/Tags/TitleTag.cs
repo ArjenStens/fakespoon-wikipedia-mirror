@@ -13,7 +13,7 @@ public class TitleTag : INostrTag
     public static string StaticTagName => "title";
     public string Value { get; init; }
     
-    public string[] ToArray => new[] { Name, Value };
+    public string[] ToArray() => new[] { Name, Value };
     public static INostrTag FromArray(IEnumerable<string> tagArray)
     {
         return new TitleTag();

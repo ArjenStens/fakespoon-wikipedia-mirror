@@ -6,21 +6,21 @@ public class PubKeyTag: INostrTag
 {
     public PubKeyTag(){}
     
-    public PubKeyTag(PublicKey pubKey, RelayAddress? relayHint)
+    public PubKeyTag(PublicKeyValue pubKeyValue, RelayAddress? relayHint)
     {
-        PubKey = pubKey;
+        PubKeyValue = pubKeyValue;
         RelayHint = relayHint;
     }
 
     public string Name => StaticTagName;
     public static string StaticTagName => "p";
 
-    public PublicKey PubKey { get; init; }
+    public PublicKeyValue PubKeyValue { get; init; }
     
     public RelayAddress? RelayHint { get; init; }
 
     
-    public string[] ToArray => new[] { Name, PubKey.Value, RelayHint?.Value ?? "" };
+    public string[] ToArray() => new[] { Name, PubKeyValue.Value, RelayHint?.Value ?? "" };
     
     public static INostrTag FromArray(IEnumerable<string> tagArray)
     {

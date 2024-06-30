@@ -4,9 +4,10 @@ namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
 
 public class ClientTag: INostrTag
 {
-    public ClientTag(string clientName, PublicKey clientAddress, string? identifier, RelayAddress? relayHint)
+    public ClientTag(string clientName, PublicKeyValue clientAddress, string? identifier, RelayAddress? relayHint)
     {
         ClientName = clientName;
+        ClientAddress = clientAddress;
         RelayHint = relayHint;
         Identifier = identifier;
     }
@@ -18,14 +19,14 @@ public class ClientTag: INostrTag
 
     public string ClientName { get; init; }
     
-    public PublicKey ClientAddress { get; init; }
+    public PublicKeyValue ClientAddress { get; init; }
     
     public string Identifier { get; init; }
     
     public RelayAddress? RelayHint { get; init; }
     
-    public string[] ToArray => new[] { Name, $"{ClientName}:{ClientAddress}:{Identifier}", RelayHint?.Value ?? "" };
-    
+    public string[] ToArray() => new[] { Name, $"{ClientName}:{ClientAddress.Value}:{Identifier}", RelayHint?.Value ?? "" };
+
     public static INostrTag FromArray(IEnumerable<string> tagArray)
     {
         return new ClientTag();

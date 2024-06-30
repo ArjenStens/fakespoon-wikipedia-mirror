@@ -35,7 +35,7 @@ public class CreateWikiFreediaNoteCommandHandler(
                 new IdentifierTag(WikiFreediaUtils.AsTopicName(cmd.WikiPage.Title)),
                 new TitleTag(cmd.WikiPage.Title),
                 new CategoriesTag(categories),
-                new ClientTag("FakeSpoon-WikiMirror", new PublicKey("bla"), "fakespoon-wiki-mirror", null)
+                new ClientTag("FakeSpoon-WikiMirror", new PublicKeyValue("bla"), "fakespoon-wiki-mirror", null)
             },
             Content = new(markdownContent)
         };

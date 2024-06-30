@@ -9,13 +9,13 @@ namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Converters
     public class NostrTagsConverter() : JsonConverter<IEnumerable<INostrTag>>
     {
         
-        private static readonly Dictionary<string, Type> TagTypeMappings = Assembly.GetExecutingAssembly().GetTypes()
+        private static readonly Dictionary<string, Type> TagTypeMappings = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
             .Where(t => typeof(INostrTag).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
             .ToDictionary(t => (string)t.GetProperty("StaticTagName").GetValue(null), t => t);
         
         public override void WriteJson(JsonWriter writer, IEnumerable<INostrTag>? tags, JsonSerializer serializer)
         {
-            var tagArray = tags.Select(tag => tag.ToArray).ToList();
+            var tagArray = tags.Select(tag => tag.ToArray().ToList()).ToList();
             JsonConvert.SerializeObject(tagArray);
         }
 
@@ -33,7 +33,15 @@ namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Converters
             foreach (var tag in tagsArray)
             {
                 var tagName = tag.First();
-                    
+                
+                
+                // var assembly = Assembly.GetExecutingAssembly().GetTypes();
+                // var types1 = ;
+                //
+                // var types = assembly
+                //     .Where(t => typeof(INostrTag).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
+                //     .ToDictionary(t => (string)t.GetProperty("StaticTagName").GetValue(null), t => t);
+                //
                 // instantiate
                 if (!TagTypeMappings.TryGetValue(tagName, out Type tagType))
                 {
