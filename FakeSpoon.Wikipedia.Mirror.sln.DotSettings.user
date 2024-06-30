@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=24c16f0e_002Db625_002D4943_002Dae05_002D004d4f83f641/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_SerializeEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr.NostrEventTests.Should_SerializeEvent&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr.NostrEventTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	

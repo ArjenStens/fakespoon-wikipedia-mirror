@@ -29,9 +29,7 @@ public class NostrEvent
 
     public required string Content { get; set; }
 
-    public Signature Sig { get; set; }
-
-    
+    public string Sig { get; set; }
     
     private string ComputeId()
     {

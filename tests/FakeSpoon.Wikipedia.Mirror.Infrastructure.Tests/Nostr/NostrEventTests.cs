@@ -1,4 +1,5 @@
 
+using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Extensions;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Keys;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
 using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
@@ -15,13 +16,13 @@ public class NostrEventTests
     }
     
     [Test]
-    public void Should_SerializeEvent()
+    public void GetId_Should_ProduceValidId()
     {
         // arrange
         var evnt = new NostrEvent()
         {
             Kind = Kind.LongFormContent,
-            PubKey = PublicKey.FromBech32("npub1w2fkh2057g032clzu5qp4t0xen36estz5nve4q3ayvwuvsdeuw6qn80sxn"),
+            PubKey = PublicKey.FromHex("522075274c6883c150882b17931041095230e7a9b1c429e23d77571901d1ba9a"),
             Tags = new INostrTag[]
             {
                 new ClientTag("name", new PublicKeyValue("addr"), "identifier", new("relayHint")),
@@ -30,12 +31,37 @@ public class NostrEventTests
             CreatedAt = DateTime.Parse("1990-01-01T00:00:00+00:00"),
             Content = "empty",
         };
-        var expected = "801b190d98688b0c14ecc7997c17a32f85191ef6498bd227fb1cd66fa3feae82";
+        var expected = "b65e3f746724e67f9ed272618c771b78b202a10722180ddc203e2e620eeb724a";
         
         // act
         var actual = evnt.Id;
 
         // assert
         actual.Should().Be(expected);
+    }
+
+    [Test]
+    public void SignEvent_Should_ProduceValidSignature()
+    {
+        var evnt = new NostrEvent()
+        {
+            Kind = Kind.LongFormContent,
+            PubKey = PublicKey.FromHex("522075274c6883c150882b17931041095230e7a9b1c429e23d77571901d1ba9a"),
+            Tags = new INostrTag[]
+            {
+                new ClientTag("name", new PublicKeyValue("addr"), "identifier", new("relayHint")),
+                new IdentifierTag("identifier")
+            },
+            CreatedAt = DateTime.Parse("1990-01-01T00:00:00+00:00"),
+            Content = "empty",
+        };
+        var privateKey = Privatekey.FromBech32("nsec1cmh8cayum3dz6tvv0lwdnf0pdhj3am7ht0xqrkjq4vv3ljs4umhsdrwdvw");
+        
+        // act
+        evnt.Sign(privateKey);
+        var hasValidSignature = evnt.HasValidSignature();
+
+        // assert
+        hasValidSignature.Should().BeTrue();
     }
 }
