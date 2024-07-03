@@ -1,6 +1,6 @@
 using Carter;
+using FakeSpoon.Lib.Cqe.Exensions;
 using FakeSpoon.Wikipedia.Mirror.Domain.Commands;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Cqe.Exensions;
 
 namespace FakeSpoon.Wikipedia.Mirror.Web;
 
@@ -13,6 +13,8 @@ public static class Startup
         services
             .AddCqe(new []{typeof(PostWikipediaDumpCommand).Assembly}) // Commands, Queries, Events
             .AddCarter(); // Endpoint mapping
+
+        // services.AddTransient<IRelayConnection, RelayConnection>();
         
         return services;
     }
@@ -22,6 +24,4 @@ public static class Startup
     {
         app.MapCarter();
     }
-
-    
 }

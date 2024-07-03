@@ -1,6 +1,6 @@
 using System.Xml;
+using FakeSpoon.Lib.Cqe.Base;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Cqe.Base;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 

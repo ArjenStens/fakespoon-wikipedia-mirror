@@ -1,9 +1,8 @@
-
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Extensions;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Keys;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
+using FakeSpoon.Lib.NostrClient.Extensions;
+using FakeSpoon.Lib.NostrClient.Keys;
+using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Models.Tags;
+using FakeSpoon.Lib.NostrClient.Models.Values;
 using FluentAssertions;
 
 namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr;

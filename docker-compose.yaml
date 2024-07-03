@@ -1,0 +1,23 @@
+services:
+  strfry-nostr-relay:
+    image: strfry
+    container_name: strfry
+    restart: unless-stopped
+    volumes:
+      - ./strfry/my-strfry.conf:/etc/strfry.conf
+      - ./strfry/my-strfry-db:/app/strfry-db
+      - ./strfry/write-policy.py:/app/write-policy.py
+    ports:
+      - "7777:7777"
+    logging:
+      driver: syslog
+  caddy:
+    image: caddy:alpine
+    container_name: strfry-caddy
+    restart: unless-stopped
+    volumes:
+      - ./strfry/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+
+volumes:
+  caddy_data:

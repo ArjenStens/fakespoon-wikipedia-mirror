@@ -12,6 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FakeSpoon.Lib.Cqe\FakeSpoon.Lib.Cqe.csproj" />
+      <ProjectReference Include="..\FakeSpoon.Lib.NostrClient\FakeSpoon.Lib.NostrClient.csproj" />
       <ProjectReference Include="..\FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj" />
     </ItemGroup>
 

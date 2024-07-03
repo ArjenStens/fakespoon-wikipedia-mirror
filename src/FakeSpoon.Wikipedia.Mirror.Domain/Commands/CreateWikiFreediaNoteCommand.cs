@@ -1,12 +1,12 @@
 using System.Text.RegularExpressions;
+using FakeSpoon.Lib.Cqe.Base;
+using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Models.Tags;
+using FakeSpoon.Lib.NostrClient.Models.Values;
 using FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
 using FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Utils;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Cqe.Base;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
 using Microsoft.Extensions.Logging;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;
@@ -17,9 +17,10 @@ public class CreateWikiFreediaNoteCommand : ICommand
 }
 
 public class CreateWikiFreediaNoteCommandHandler(
-    ILogger<CreateWikiFreediaNoteCommandHandler> Logger) : ICommandHandler<CreateWikiFreediaNoteCommand>
+    ILogger<CreateWikiFreediaNoteCommandHandler> Logger,
+    ICommandHandler<PubCommand> handler) : ICommandHandler<CreateWikiFreediaNoteCommand>
 {
-    public Task Execute(CreateWikiFreediaNoteCommand cmd)
+    public async Task Execute(CreateWikiFreediaNoteCommand cmd)
     {
         Logger.LogInformation("page");
 
@@ -39,10 +40,9 @@ public class CreateWikiFreediaNoteCommandHandler(
             },
             Content = new(markdownContent)
         };
+
+        await handler.Execute(new PubCommand(){Event = note});
         
-        
-        
-        return Task.CompletedTask;
     }
 
     public IEnumerable<string> GetCategories(string wikiText)

@@ -1,6 +1,6 @@
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Tags;
-using FakeSpoon.Wikipedia.Mirror.Infrastructure.Nostr.Models.Values;
+using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Models.Tags;
+using FakeSpoon.Lib.NostrClient.Models.Values;
 using FluentAssertions;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
