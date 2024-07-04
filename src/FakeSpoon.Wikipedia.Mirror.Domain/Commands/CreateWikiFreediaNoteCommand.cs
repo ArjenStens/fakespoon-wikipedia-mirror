@@ -30,7 +30,7 @@ public class CreateWikiFreediaNoteCommandHandler(
         markdownContent += $"\n [View on legacy Wikipedia]({WikiPediaUtils.UrlFromTitle(cmd.WikiPage.Title)})";
         var note = new NostrEvent
         {
-            Kind = Kind.LongFormContent,
+            Kind = Kind.WikiArticle,
             Tags = new INostrTag[]
             {
                 new IdentifierTag(WikiFreediaUtils.AsTopicName(cmd.WikiPage.Title)),

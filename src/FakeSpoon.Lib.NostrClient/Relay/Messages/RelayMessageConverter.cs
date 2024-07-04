@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Reflection;
+using FakeSpoon.Lib.NostrClient.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
@@ -18,7 +19,7 @@ public class RelayRequestIndexAttribute : Attribute
     }
 }
 
-public class RelayRequestConverter() : JsonConverter<IRelayMessage>
+public class RelayMessageConverter() : JsonConverter<IRelayMessage>
 {
     
     private static readonly ConcurrentDictionary<(MemberInfo, Type), Attribute?> AttributeByMemberInfoAndTypeCache = new();
@@ -48,7 +49,7 @@ public class RelayRequestConverter() : JsonConverter<IRelayMessage>
             }
         }
         
-        writer.WriteRawValue(JsonConvert.SerializeObject(array));
+        writer.WriteRawValue(JsonConvert.SerializeObject(array, SerializerSettings.Settings));
     }
 
     public override IRelayMessage? ReadJson(JsonReader reader, Type objectType, IRelayMessage? existingValue, bool hasExistingValue,
@@ -66,8 +67,7 @@ public class RelayRequestConverter() : JsonConverter<IRelayMessage>
             .Where(p => GetCustomAttribute<RelayRequestIndexAttribute>(p) != null)
             .OrderBy(p => GetCustomAttribute<RelayRequestIndexAttribute>(p)?.Index)
             .ToArray();
-
-
+        
         var relayMessageInstance = (IRelayMessage) Activator.CreateInstance(objectType)!;
 
         var propertiesValues = new Dictionary<PropertyInfo, object?>();

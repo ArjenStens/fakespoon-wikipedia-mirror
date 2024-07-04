@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace FakeSpoon.Lib.NostrClient.Relay.Messages.Response;
 
-[JsonConverter(typeof(RelayRequestConverter))]
+[JsonConverter(typeof(RelayMessageConverter))]
 public class OkResponse : RelayResponse
 {
     [RelayRequestIndex(0)]

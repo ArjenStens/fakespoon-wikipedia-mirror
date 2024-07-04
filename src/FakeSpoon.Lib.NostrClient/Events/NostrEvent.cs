@@ -16,7 +16,7 @@ public class NostrEvent
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     [JsonConverter(typeof(PublicKeyConverter))]
-    public PublicKey PubKey { get; set; }
+    public PublicKey Pubkey { get; set; }
     
     public required Kind Kind { get; set; }
     
@@ -32,7 +32,7 @@ public class NostrEvent
         var array = new List<dynamic>
         {
             0,
-            PubKey.Hex,
+            Pubkey.Hex,
             ((DateTimeOffset)CreatedAt).ToUnixTimeSeconds(),
             Kind,
             Tags.Select(t => t.ToArray()),

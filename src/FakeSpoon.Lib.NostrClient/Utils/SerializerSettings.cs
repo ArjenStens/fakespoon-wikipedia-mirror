@@ -16,6 +16,9 @@ public static class SerializerSettings
         {
             new UnixDateTimeConverter()
         },
-        ContractResolver = new CamelCasePropertyNamesContractResolver()
+        ContractResolver = new DefaultContractResolver
+        {
+            NamingStrategy = new SnakeCaseNamingStrategy()
+        }
     };
 }

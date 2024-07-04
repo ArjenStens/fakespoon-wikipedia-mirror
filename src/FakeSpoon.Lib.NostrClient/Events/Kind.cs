@@ -2,5 +2,6 @@ namespace FakeSpoon.Lib.NostrClient.Events;
 
 public enum Kind
 {
-    LongFormContent = 30023
+    LongFormContent = 30023,
+    WikiArticle = 30818,
 }

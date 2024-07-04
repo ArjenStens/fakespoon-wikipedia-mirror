@@ -15,6 +15,6 @@ public static class NostrEventExstensions
     
     public static bool HasValidSignature(this NostrEvent evnt)
     {
-        return evnt.PubKey.IsHexSignatureValid(evnt.Sig, evnt.Id);
+        return evnt.Pubkey.IsHexSignatureValid(evnt.Sig, evnt.Id);
     }
 }

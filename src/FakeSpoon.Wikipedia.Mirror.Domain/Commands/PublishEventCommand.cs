@@ -6,6 +6,7 @@ using FakeSpoon.Lib.NostrClient.Keys;
 using FakeSpoon.Lib.NostrClient.Relay;
 using FakeSpoon.Lib.NostrClient.Relay.Messages.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
+using FakeSpoon.Lib.NostrClient.Utils;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -24,17 +25,18 @@ public class PubCommandHandler(
 {
     public async Task Execute(PubCommand cmd)
     {
-        var privatekey = Privatekey.GenerateNew();
+        var privatekey = Privatekey.FromBech32("[redacted]");
         var pubkey = privatekey.DerivePublicKey();
 
-        cmd.Event.PubKey = pubkey;
+        cmd.Event.Pubkey = pubkey;
         cmd.Event.Sign(privatekey);
 
         // await handler.Execute(new(cmd.Event));
 
         var relays = new[]
         {
-            new Uri("ws://localhost:4736")
+            new Uri("wss://nos.lol/"),
+            // new Uri("wss://relay.damus.io/")
         };
 
         // using var multiClient = new MultiRelayClient(relayLogger);
@@ -51,10 +53,15 @@ public class PubCommandHandler(
             {
                 Console.WriteLine(msg);
             });
+            
+            multiClient.MessageStreams.OkStream.Subscribe(msg =>
+            {
+                Console.WriteLine(msg);
+            });
 
             await client.Start();
             
-            var serialized = JsonConvert.SerializeObject(cmd.Event);
+            var serialized = JsonConvert.SerializeObject(cmd.Event, SerializerSettings.Settings);
             multiClient.Send(new PublishEventRequest {Event = cmd.Event});
 
         }
