@@ -1,8 +1,8 @@
+using FakeSpoon.Lib.NostrClient.Events;
+using FakeSpoon.Lib.NostrClient.Events.Tags;
+using FakeSpoon.Lib.NostrClient.Events.Values;
 using FakeSpoon.Lib.NostrClient.Extensions;
 using FakeSpoon.Lib.NostrClient.Keys;
-using FakeSpoon.Lib.NostrClient.Models;
-using FakeSpoon.Lib.NostrClient.Models.Tags;
-using FakeSpoon.Lib.NostrClient.Models.Values;
 using FluentAssertions;
 
 namespace FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr;

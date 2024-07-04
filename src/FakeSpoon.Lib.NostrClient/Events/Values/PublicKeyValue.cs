@@ -1,8 +1,8 @@
-namespace FakeSpoon.Lib.NostrClient.Models.Values;
+namespace FakeSpoon.Lib.NostrClient.Events.Values;
 
-public record EventId : NoteValue
+public record PublicKeyValue : NoteValue
 {
-    public EventId(string value)
+    public PublicKeyValue(string value)
     {
         Value = value;
 

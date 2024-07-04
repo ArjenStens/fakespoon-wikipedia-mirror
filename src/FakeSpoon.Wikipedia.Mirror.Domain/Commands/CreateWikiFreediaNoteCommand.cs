@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
 using FakeSpoon.Lib.Cqe.Base;
-using FakeSpoon.Lib.NostrClient.Models;
-using FakeSpoon.Lib.NostrClient.Models.Tags;
-using FakeSpoon.Lib.NostrClient.Models.Values;
+using FakeSpoon.Lib.NostrClient.Events;
+using FakeSpoon.Lib.NostrClient.Events.Tags;
+using FakeSpoon.Lib.NostrClient.Events.Values;
 using FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
 using FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;

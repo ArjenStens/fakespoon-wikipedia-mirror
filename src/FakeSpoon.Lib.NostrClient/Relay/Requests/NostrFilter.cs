@@ -1,4 +1,4 @@
-using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Events;
 using Newtonsoft.Json;
 
 namespace FakeSpoon.Lib.NostrClient.Relay.Requests;

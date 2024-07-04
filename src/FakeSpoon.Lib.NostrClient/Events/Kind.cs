@@ -1,4 +1,4 @@
-namespace FakeSpoon.Lib.NostrClient.Models;
+namespace FakeSpoon.Lib.NostrClient.Events;
 
 public enum Kind
 {

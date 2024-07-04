@@ -1,5 +1,5 @@
 using FakeSpoon.Lib.Cqe.Base;
-using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Events;
 using Microsoft.Extensions.Logging;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;

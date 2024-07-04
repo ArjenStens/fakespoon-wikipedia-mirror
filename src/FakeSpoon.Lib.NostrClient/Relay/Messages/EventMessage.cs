@@ -1,5 +1,4 @@
-using System.Diagnostics;
-using FakeSpoon.Lib.NostrClient.Models;
+using FakeSpoon.Lib.NostrClient.Events;
 
 namespace FakeSpoon.Lib.NostrClient.Relay.Messages;
 

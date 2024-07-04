@@ -1,5 +1,5 @@
-﻿using FakeSpoon.Lib.NostrClient.Models;
-using FakeSpoon.Lib.NostrClient.Relay.Messages;
+﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
+using FakeSpoon.Lib.NostrClient.Relay.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -62,7 +62,7 @@ public class SingleRelayClient : IRelayClient
     /// It logs and re-throws every exception. 
     /// </summary>
     /// <param name="request">Request/message to be sent</param>
-    public void Send<T>(T request)
+    public void Send(IRelayRequest request)
     {
         try
         {
@@ -73,6 +73,8 @@ public class SingleRelayClient : IRelayClient
 
             var serialized = JsonConvert.SerializeObject(request, _jsonSettings);
             RelayWebsocketClient.Send(serialized);
+
+            return;
         }
         catch (Exception e)
         {
@@ -122,7 +124,7 @@ public class SingleRelayClient : IRelayClient
 
         try
         {
-            var messageType = messageTypeString.ToRelayMessageType();
+            var messageType = JsonConvert.DeserializeObject<RelayMessageType>(messageTypeString);
             switch (messageType)
             {
                 case RelayMessageType.Event:

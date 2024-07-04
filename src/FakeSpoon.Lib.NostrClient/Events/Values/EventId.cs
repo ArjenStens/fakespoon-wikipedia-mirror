@@ -1,8 +1,8 @@
-namespace FakeSpoon.Lib.NostrClient.Models.Values;
+namespace FakeSpoon.Lib.NostrClient.Events.Values;
 
-public record RelayAddress : NoteValue
+public record EventId : NoteValue
 {
-    public RelayAddress(string value)
+    public EventId(string value)
     {
         Value = value;
 
@@ -10,6 +10,7 @@ public record RelayAddress : NoteValue
     }
 
     public string Value { get; init; }
+
     public sealed override bool Validate(bool throwOnInvalid)
     {
         return true; // TODO: Add this

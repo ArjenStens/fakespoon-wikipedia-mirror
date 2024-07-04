@@ -1,6 +1,6 @@
-using FakeSpoon.Lib.NostrClient.Models;
-using FakeSpoon.Lib.NostrClient.Models.Tags;
-using FakeSpoon.Lib.NostrClient.Models.Values;
+using FakeSpoon.Lib.NostrClient.Events;
+using FakeSpoon.Lib.NostrClient.Events.Tags;
+using FakeSpoon.Lib.NostrClient.Events.Values;
 using FluentAssertions;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;

@@ -1,6 +1,6 @@
-using FakeSpoon.Lib.NostrClient.Models.Values;
+using FakeSpoon.Lib.NostrClient.Events.Values;
 
-namespace FakeSpoon.Lib.NostrClient.Models.Tags;
+namespace FakeSpoon.Lib.NostrClient.Events.Tags;
 
 public class ClientTag: INostrTag
 {

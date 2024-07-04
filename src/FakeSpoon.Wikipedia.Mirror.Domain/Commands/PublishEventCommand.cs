@@ -1,12 +1,13 @@
 using System.Net.WebSockets;
 using FakeSpoon.Lib.Cqe.Base;
+using FakeSpoon.Lib.NostrClient.Events;
 using FakeSpoon.Lib.NostrClient.Extensions;
 using FakeSpoon.Lib.NostrClient.Keys;
-using FakeSpoon.Lib.NostrClient.Models;
 using FakeSpoon.Lib.NostrClient.Relay;
+using FakeSpoon.Lib.NostrClient.Relay.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;
 
@@ -45,8 +46,10 @@ public class PubCommandHandler(
             relayWebsocketClients.Add(client);
             multiClient.RegisterCommunicator(client);
         }
+
+        var serialized = JsonConvert.SerializeObject(cmd.Event);
         
-        multiClient.Send(cmd.Event);
+        multiClient.Send(new PublishEventRequest(cmd.Event));
 
     }
     

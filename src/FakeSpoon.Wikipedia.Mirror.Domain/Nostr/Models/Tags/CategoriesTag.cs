@@ -1,4 +1,4 @@
-using FakeSpoon.Lib.NostrClient.Models.Tags;
+using FakeSpoon.Lib.NostrClient.Events.Tags;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
 

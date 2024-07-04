@@ -1,8 +1,8 @@
-namespace FakeSpoon.Lib.NostrClient.Models.Values;
+namespace FakeSpoon.Lib.NostrClient.Events.Values;
 
-public record PublicKeyValue : NoteValue
+public record Signature : NoteValue
 {
-    public PublicKeyValue(string value)
+    public Signature(string value)
     {
         Value = value;
 

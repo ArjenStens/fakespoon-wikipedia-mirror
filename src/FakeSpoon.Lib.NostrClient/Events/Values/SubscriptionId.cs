@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FakeSpoon.Lib.NostrClient.Models.Values;
+namespace FakeSpoon.Lib.NostrClient.Events.Values;
 
 public record SubscriptionId : NoteValue
 {

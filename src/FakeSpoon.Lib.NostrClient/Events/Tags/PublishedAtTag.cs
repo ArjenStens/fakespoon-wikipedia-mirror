@@ -1,6 +1,6 @@
 
 
-namespace FakeSpoon.Lib.NostrClient.Models.Tags;
+namespace FakeSpoon.Lib.NostrClient.Events.Tags;
 
 public class PublishedAtTag: INostrTag
 {

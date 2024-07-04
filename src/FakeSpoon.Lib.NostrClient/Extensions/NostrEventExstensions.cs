@@ -1,5 +1,5 @@
+using FakeSpoon.Lib.NostrClient.Events;
 using FakeSpoon.Lib.NostrClient.Keys;
-using FakeSpoon.Lib.NostrClient.Models;
 
 namespace FakeSpoon.Lib.NostrClient.Extensions;
 

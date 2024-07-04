@@ -1,9 +1,9 @@
-using FakeSpoon.Lib.NostrClient.Models.Tags;
+using FakeSpoon.Lib.NostrClient.Events.Tags;
 using Newtonsoft.Json;
 using JsonException = Newtonsoft.Json.JsonException;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
-namespace FakeSpoon.Lib.NostrClient.Models.Converters;
+namespace FakeSpoon.Lib.NostrClient.Events.Converters;
 
 public class NostrTagsConverter() : JsonConverter<IEnumerable<INostrTag>>
 {
@@ -15,7 +15,7 @@ public class NostrTagsConverter() : JsonConverter<IEnumerable<INostrTag>>
     public override void WriteJson(JsonWriter writer, IEnumerable<INostrTag>? tags, JsonSerializer serializer)
     {
         var tagArray = tags.Select(tag => tag.ToArray().ToList()).ToList();
-        JsonConvert.SerializeObject(tagArray);
+        writer.WriteRawValue(JsonConvert.SerializeObject(tagArray));
     }
 
     public override IEnumerable<INostrTag>? ReadJson(JsonReader reader, Type objectType, IEnumerable<INostrTag>? existingValue, bool hasExistingValue,
