@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
 
-public class GetEventsRequest(string subscription, NostrFilter nostrFilter) : IRelayRequest
+public class GetEventsRequest(string subscription, NostrFilter nostrFilter) : IRelayMessage
 {
     [RelayRequestIndex(0)]
     public RelayMessageType MessageType { get; init; } = RelayMessageType.Request;

@@ -1,4 +1,5 @@
-﻿using FakeSpoon.Lib.NostrClient.Relay.Requests;
+﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
+using FakeSpoon.Lib.NostrClient.Relay.Requests;
 
 namespace FakeSpoon.Lib.NostrClient.Relay;
 
@@ -14,5 +15,5 @@ public interface IRelayClient : IDisposable
     /// It logs and re-throws every exception. 
     /// </summary>
     /// <param name="request">Request/message to be sent</param>
-    void Send(IRelayRequest request);
+    void Send(IRelayMessage request);
 }

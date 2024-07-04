@@ -23,6 +23,7 @@ public class PostWikipediaDumpCommandHandler(
 
 
         var tasks = pages
+            .Take(1) // temp for testing
             .Select(page => handler.Execute(new() { WikiPage = page }))
             .ToList();
         return Task.WhenAll(tasks);

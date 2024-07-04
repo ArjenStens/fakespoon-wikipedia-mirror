@@ -29,15 +29,16 @@ public class PubCommandHandler(
 
         cmd.Event.PubKey = pubkey;
         cmd.Event.Sign(privatekey);
-        
+
         // await handler.Execute(new(cmd.Event));
-        
+
         var relays = new[]
         {
             new Uri("ws://localhost:4736")
         };
 
-        using var multiClient = new MultiRelayClient(relayLogger);
+        // using var multiClient = new MultiRelayClient(relayLogger);
+        var multiClient = new MultiRelayClient(relayLogger);
         var relayWebsocketClients = new List<IRelayWebsocketClient>();
 
         foreach (var relay in relays)
@@ -45,16 +46,22 @@ public class PubCommandHandler(
             var client = CreateRelayWebsocketClient(relay);
             relayWebsocketClients.Add(client);
             multiClient.RegisterCommunicator(client);
+            
+            multiClient.MessageStreams.NoticeStream.Subscribe(msg =>
+            {
+                Console.WriteLine(msg);
+            });
 
             await client.Start();
+
+           
+
+            var serialized = JsonConvert.SerializeObject(cmd.Event);
+            multiClient.Send(new PublishEventRequest(cmd.Event));
+
         }
-
-        var serialized = JsonConvert.SerializeObject(cmd.Event);
-        
-        multiClient.Send(new PublishEventRequest(cmd.Event));
-
     }
-    
+
     IRelayWebsocketClient CreateRelayWebsocketClient(Uri uri)
     {
         var comm = new RelayWebsocketClient(uri, () =>

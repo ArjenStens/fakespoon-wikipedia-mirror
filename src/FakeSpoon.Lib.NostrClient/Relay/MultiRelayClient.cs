@@ -1,4 +1,5 @@
-﻿using FakeSpoon.Lib.NostrClient.Relay.Requests;
+﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
+using FakeSpoon.Lib.NostrClient.Relay.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using Microsoft.Extensions.Logging;
 
@@ -50,7 +51,7 @@ public class MultiRelayClient : IRelayClient
     /// <summary>
     /// Send message to all communicators/relays
     /// </summary>
-    public void Send(IRelayRequest request)
+    public void Send(IRelayMessage request)
     {
         foreach (var client in _clients)
         {
@@ -62,7 +63,7 @@ public class MultiRelayClient : IRelayClient
     /// Send message to the specific communicator/relay.
     /// Return false if communicator wasn't found. 
     /// </summary>
-    public bool SendTo(string communicatorName, IRelayRequest request)
+    public bool SendTo(string communicatorName, IRelayMessage request)
     {
         var found = FindClient(communicatorName);
         if (found == null)

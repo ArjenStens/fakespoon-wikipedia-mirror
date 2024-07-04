@@ -6,10 +6,10 @@ namespace FakeSpoon.Lib.NostrClient.Relay;
 
 public class RelayMessageStreams
 {
-    internal readonly Subject<EventMessage> EventSubject = new();
-    internal readonly Subject<NoticeMessage> NoticeSubject = new();
-    internal readonly Subject<EndOfStoredEventsMessage> EoseSubject = new();
-    internal readonly Subject<OkMessage> OkSubject = new();
+    internal readonly Subject<EventResponse> EventSubject = new();
+    internal readonly Subject<NoticeResponse> NoticeSubject = new();
+    internal readonly Subject<EndOfStoredEventsResponse> EoseSubject = new();
+    internal readonly Subject<OkResponse> OkSubject = new();
     
     internal readonly Subject<IRelayMessage> UnknownMessageSubject = new();
     // internal readonly Subject<RawRelayMessage> UnknownRawSubject = new();
@@ -17,21 +17,21 @@ public class RelayMessageStreams
     /// <summary>
     /// Requested Nostr events
     /// </summary>
-    public IObservable<EventMessage> EventStream => EventSubject.AsObservable();
+    public IObservable<EventResponse> EventStream => EventSubject.AsObservable();
 
     /// <summary>
     /// Human-readable messages
     /// </summary>
-    public IObservable<NoticeMessage> NoticeStream => NoticeSubject.AsObservable();
+    public IObservable<NoticeResponse> NoticeStream => NoticeSubject.AsObservable();
     
     /// <summary>
     /// Information that all stored events have been sent out
     /// </summary>
-    public IObservable<EndOfStoredEventsMessage> EoseStream => EoseSubject.AsObservable();
+    public IObservable<EndOfStoredEventsResponse> EoseStream => EoseSubject.AsObservable();
     
     /// <summary>
     /// Information if the sent event was accepted or rejected
     /// </summary>
-    public IObservable<OkMessage> OkStream => OkSubject.AsObservable();
+    public IObservable<OkResponse> OkStream => OkSubject.AsObservable();
 
 }

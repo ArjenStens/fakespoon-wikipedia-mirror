@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
 
 [JsonConverter(typeof(RelayRequestConverter))]
-public class PublishEventRequest : IRelayRequest
+public class PublishEventRequest : IRelayMessage
 {
     // for deserialization in tests
     private PublishEventRequest() 

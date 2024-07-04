@@ -17,13 +17,14 @@ public enum RelayMessageType
     Notice,
     
     [EnumMember(Value = "EOSE")]
-    EndOfStoredEvents ,
+    EndOfStoredEvents,
     
     [EnumMember(Value = "OK")]
-    Ok ,
+    Ok,
     
     [EnumMember(Value = "CLOSE")]
     Close,
         
+    [EnumMember(Value = "UNKNOWN")]
     Unknown
 }
