@@ -1,7 +1,7 @@
 using FakeSpoon.Lib.NostrClient.Events;
 using Newtonsoft.Json;
 
-namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
+namespace FakeSpoon.Lib.NostrClient.Relay.Messages;
 
 public class NostrFilter
 {

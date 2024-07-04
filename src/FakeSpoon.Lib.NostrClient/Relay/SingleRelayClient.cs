@@ -1,5 +1,5 @@
 ﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
-using FakeSpoon.Lib.NostrClient.Relay.Requests;
+using FakeSpoon.Lib.NostrClient.Relay.Messages.Response;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using FakeSpoon.Lib.NostrClient.Utils;
 using Microsoft.Extensions.Logging;
@@ -128,14 +128,5 @@ public class SingleRelayClient : IRelayClient
                            throw new InvalidOperationException("Deserialized message is null, cannot continue");
         deserialized.Source = RelayWebsocketClient;
         return deserialized;
-    }
-
-    private RawRelayMessage Raw(ResponseMessage message)
-    {
-        return new RawRelayMessage
-        {
-            Message = message,
-            Source = RelayWebsocketClient
-        };
     }
 }

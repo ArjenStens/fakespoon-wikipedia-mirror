@@ -41,7 +41,7 @@ public class CreateWikiFreediaNoteCommandHandler(
             Content = new(markdownContent)
         };
 
-        await handler.Execute(new PubCommand(){Event = note});
+        await handler.Execute(new PubCommand {Event = note});
         
     }
 

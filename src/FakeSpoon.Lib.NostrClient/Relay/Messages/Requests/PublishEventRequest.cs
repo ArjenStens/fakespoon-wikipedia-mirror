@@ -1,23 +1,11 @@
 ﻿using FakeSpoon.Lib.NostrClient.Events;
-using FakeSpoon.Lib.NostrClient.Relay.Messages;
 using Newtonsoft.Json;
 
-namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
+namespace FakeSpoon.Lib.NostrClient.Relay.Messages.Requests;
 
 [JsonConverter(typeof(RelayRequestConverter))]
 public class PublishEventRequest : IRelayMessage
 {
-    // for deserialization in tests
-    private PublishEventRequest() 
-    {
-        Event = null!;
-    }
-
-    public PublishEventRequest(NostrEvent @event)
-    {
-        Event = @event;
-    }
-
     [RelayRequestIndex(0)]
     public RelayMessageType MessageType { get; init; } = RelayMessageType.Event;
     

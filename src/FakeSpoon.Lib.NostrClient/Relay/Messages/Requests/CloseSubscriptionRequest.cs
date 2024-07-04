@@ -1,6 +1,4 @@
-﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
-
-namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
+﻿namespace FakeSpoon.Lib.NostrClient.Relay.Messages.Requests;
 
 public class CloseSubscriptionRequest(string subscription) : IRelayMessage
 {

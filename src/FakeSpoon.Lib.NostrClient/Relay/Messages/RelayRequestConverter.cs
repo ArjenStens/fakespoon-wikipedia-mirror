@@ -1,13 +1,10 @@
 using System.Collections.Concurrent;
 using System.Reflection;
-using FakeSpoon.Lib.NostrClient.Events;
-using FakeSpoon.Lib.NostrClient.Events.Tags;
-using FakeSpoon.Lib.NostrClient.Relay.Messages;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
-namespace FakeSpoon.Lib.NostrClient.Relay.Requests;
+namespace FakeSpoon.Lib.NostrClient.Relay.Messages;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class RelayRequestIndexAttribute : Attribute
@@ -34,7 +31,7 @@ public class RelayRequestConverter() : JsonConverter<IRelayMessage>
         var props = relayMessage.GetType().GetProperties();
         var orderedProperties = props.OrderBy(p => GetCustomAttribute<RelayRequestIndexAttribute>(p)?.Index);
         
-        var array = new List<object>()
+        var array = new List<object>
         {
         };
 

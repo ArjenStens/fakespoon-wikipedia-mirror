@@ -5,7 +5,7 @@ namespace FakeSpoon.Lib.NostrClient.Relay.Messages;
 
 public abstract class RelayResponse : IRelayMessage
 {
-    public RelayMessageType MessageType { get; init; } = RelayMessageType.Unknown;
+    public abstract RelayMessageType MessageType { get; init; }
     
     // public object[] AdditionalData { get; private set; } = Array.Empty<object>();
     

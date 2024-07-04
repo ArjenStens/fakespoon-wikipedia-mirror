@@ -32,7 +32,7 @@ public class NostrTagDeserializerTests
     public void Should_SerializeTags()
     {
         // arrange
-        var evnt = new NostrEvent()
+        var evnt = new NostrEvent
         {
             Kind = Kind.LongFormContent,
             Content = "empty",

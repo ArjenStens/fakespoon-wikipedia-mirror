@@ -1,5 +1,4 @@
 ﻿using FakeSpoon.Lib.NostrClient.Relay.Messages;
-using FakeSpoon.Lib.NostrClient.Relay.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using Microsoft.Extensions.Logging;
 
@@ -25,7 +24,7 @@ public class MultiRelayClient : IRelayClient
         _logger = logger;
         foreach (var communicator in communicators)
         {
-            RegisterCommunicator(communicator);
+            RegisterRelayWebsocketClient(communicator);
         }
     }
 
@@ -37,20 +36,10 @@ public class MultiRelayClient : IRelayClient
             RegisterClient(client);
         }
     }
-
-    /// <summary>
-    /// Provided message streams
-    /// </summary>
+    
     public RelayMessageStreams MessageStreams { get; } = new();
-
-    /// <summary>
-    /// Registered clients
-    /// </summary>
     public IReadOnlyCollection<SingleRelayClient> Clients => _clients.ToArray();
-
-    /// <summary>
-    /// Send message to all communicators/relays
-    /// </summary>
+    
     public void Send(IRelayMessage request)
     {
         foreach (var client in _clients)
@@ -58,11 +47,7 @@ public class MultiRelayClient : IRelayClient
             client.Send(request);
         }
     }
-
-    /// <summary>
-    /// Send message to the specific communicator/relay.
-    /// Return false if communicator wasn't found. 
-    /// </summary>
+    
     public bool SendTo(string communicatorName, IRelayMessage request)
     {
         var found = FindClient(communicatorName);
@@ -93,7 +78,7 @@ public class MultiRelayClient : IRelayClient
     /// Register a new communicator and forward messages. 
     /// Given communicator won't be disposed automatically.
     /// </summary>
-    public void RegisterCommunicator(IRelayWebsocketClient communicator)
+    public void RegisterRelayWebsocketClient(IRelayWebsocketClient communicator)
     {
         var client = new SingleRelayClient(communicator, _logger);
         RegisterClient(client);

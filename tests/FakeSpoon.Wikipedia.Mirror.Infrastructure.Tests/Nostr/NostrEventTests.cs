@@ -18,7 +18,7 @@ public class NostrEventTests
     public void GetId_Should_ProduceValidId()
     {
         // arrange
-        var evnt = new NostrEvent()
+        var evnt = new NostrEvent
         {
             Kind = Kind.LongFormContent,
             PubKey = PublicKey.FromHex("522075274c6883c150882b17931041095230e7a9b1c429e23d77571901d1ba9a"),
@@ -42,7 +42,7 @@ public class NostrEventTests
     [Test]
     public void SignEvent_Should_ProduceValidSignature()
     {
-        var evnt = new NostrEvent()
+        var evnt = new NostrEvent
         {
             Kind = Kind.LongFormContent,
             PubKey = PublicKey.FromHex("522075274c6883c150882b17931041095230e7a9b1c429e23d77571901d1ba9a"),

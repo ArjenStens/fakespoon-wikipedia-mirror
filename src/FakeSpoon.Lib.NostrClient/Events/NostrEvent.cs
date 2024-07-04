@@ -29,7 +29,7 @@ public class NostrEvent
     
     private string ComputeId()
     {
-        var array = new List<dynamic>()
+        var array = new List<dynamic>
         {
             0,
             PubKey.Hex,

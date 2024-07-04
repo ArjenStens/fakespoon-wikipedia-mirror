@@ -4,7 +4,7 @@ using FakeSpoon.Lib.NostrClient.Events;
 using FakeSpoon.Lib.NostrClient.Extensions;
 using FakeSpoon.Lib.NostrClient.Keys;
 using FakeSpoon.Lib.NostrClient.Relay;
-using FakeSpoon.Lib.NostrClient.Relay.Requests;
+using FakeSpoon.Lib.NostrClient.Relay.Messages.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -45,7 +45,7 @@ public class PubCommandHandler(
         {
             var client = CreateRelayWebsocketClient(relay);
             relayWebsocketClients.Add(client);
-            multiClient.RegisterCommunicator(client);
+            multiClient.RegisterRelayWebsocketClient(client);
             
             multiClient.MessageStreams.NoticeStream.Subscribe(msg =>
             {
@@ -53,11 +53,9 @@ public class PubCommandHandler(
             });
 
             await client.Start();
-
-           
-
+            
             var serialized = JsonConvert.SerializeObject(cmd.Event);
-            multiClient.Send(new PublishEventRequest(cmd.Event));
+            multiClient.Send(new PublishEventRequest {Event = cmd.Event});
 
         }
     }
