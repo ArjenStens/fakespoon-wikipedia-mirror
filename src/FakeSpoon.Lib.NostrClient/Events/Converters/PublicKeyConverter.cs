@@ -9,7 +9,7 @@ public class PublicKeyConverter() : JsonConverter<PublicKey>
 {
     public override void WriteJson(JsonWriter writer, PublicKey? value, JsonSerializer serializer)
     {
-        writer.WriteRawValue(value.Bech32);
+        writer.WriteRawValue(JsonConvert.SerializeObject(value.Bech32));
     }
 
     public override PublicKey? ReadJson(JsonReader reader, Type objectType, PublicKey? existingValue, bool hasExistingValue,

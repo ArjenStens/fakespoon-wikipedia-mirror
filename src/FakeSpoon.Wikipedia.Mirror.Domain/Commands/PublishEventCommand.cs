@@ -45,6 +45,8 @@ public class PubCommandHandler(
             var client = CreateRelayWebsocketClient(relay);
             relayWebsocketClients.Add(client);
             multiClient.RegisterCommunicator(client);
+
+            await client.Start();
         }
 
         var serialized = JsonConvert.SerializeObject(cmd.Event);
