@@ -1,7 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=24c16f0e_002Db625_002D4943_002Dae05_002D004d4f83f641/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_SerializeEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2460598c_002D796c_002D4504_002D855a_002D242f1e9d9e16/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NostrEventTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr.NostrEventTests&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.ToWikiArticle_Should_ProduceValidArticle&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.GetXmlElements_Should_ProvideListOfAllElements&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=24c16f0e_002Db625_002D4943_002Dae05_002D004d4f83f641/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_SerializeEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr.NostrEventTests&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.ToWikiArticle_Should_ProduceValidArticle&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	
@@ -10,14 +18,24 @@
     &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Test1&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2a165e3f_002D152e_002D455f_002D8870_002D89db31f646be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=467196e7_002D8028_002D4d10_002D8aa2_002D0ef3405cb006/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NostrEventTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Should_DeserializeTags&lt;/TestId&gt;
-    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Should_SerializeTags&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Nostr.NostrEventTests&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.ToWikiArticle_Should_ProduceValidArticle&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.GetXmlElements_Should_ProvideListOfAllElements&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ba7be8db_002Dd42a_002D46d4_002D97e6_002Dd70920db6f24/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_SerializeTags" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c53d3ce7_002D781d_002D45a0_002Da944_002Dca527e18f501/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RenderWikiTemplates_Should_ProduceValidArticle" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::4791434B-6F4D-4CBB-9B68-5001FEDC6522::net8.0::FakeSpoon.Wikipedia.Mirror.Infrastructure.Tests.Tests.Should_SerializeTags&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.RenderWikiTemplates_Should_ProduceValidArticle&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=da05f39a_002Dd3a2_002D421b_002Dadb9_002D60e2d5f306f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RenderWikiTemplates_Should_ProduceValidArticle #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.RenderWikiTemplates_Should_ProduceValidArticle&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String></wpf:ResourceDictionary>

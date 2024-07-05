@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="6.12.0" />
+        <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.4" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="NUnit" Version="4.1.0" />
         <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
@@ -22,14 +22,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\FakeSpoon.Lib.NostrClient\FakeSpoon.Lib.NostrClient.csproj" />
-      <ProjectReference Include="..\..\src\FakeSpoon.Wikipedia.Mirror.Infrastructure\FakeSpoon.Wikipedia.Mirror.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\src\FakeSpoon.Wikipedia.Mirror.Domain\FakeSpoon.Wikipedia.Mirror.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="FakeSpoon.Wikipedia.Mirror.Infrastructure">
-        <HintPath>bin\Debug\net8.0\FakeSpoon.Wikipedia.Mirror.Infrastructure.dll</HintPath>
-      </Reference>
+        <None Include="$(ProjectDir)TestFiles\**" LinkBase="TestFiles\" CopyToOutputDirectory="PreserveNewest"  />
     </ItemGroup>
 
 </Project>

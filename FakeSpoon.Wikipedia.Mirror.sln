@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Lib.Cqe", "src\Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Lib.NostrClient", "src\FakeSpoon.Lib.NostrClient\FakeSpoon.Lib.NostrClient.csproj", "{449266BC-F5D4-4B5B-98A2-E2C7F76D0949}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeSpoon.Wikipedia.Mirror.Domain.Tests", "tests\FakeSpoon.Wikipedia.Mirror.Domain.Tests\FakeSpoon.Wikipedia.Mirror.Domain.Tests.csproj", "{9C30D275-EA69-42FA-B375-49A0C5EAA1EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{449266BC-F5D4-4B5B-98A2-E2C7F76D0949}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{449266BC-F5D4-4B5B-98A2-E2C7F76D0949}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{449266BC-F5D4-4B5B-98A2-E2C7F76D0949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C30D275-EA69-42FA-B375-49A0C5EAA1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C30D275-EA69-42FA-B375-49A0C5EAA1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C30D275-EA69-42FA-B375-49A0C5EAA1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C30D275-EA69-42FA-B375-49A0C5EAA1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A665E56-C08D-4EFA-A4FD-93073250422E} = {5F529DF4-E894-448D-B945-7CF6B83CFA6D}
@@ -60,5 +66,6 @@ Global
 		{4791434B-6F4D-4CBB-9B68-5001FEDC6522} = {CE286405-26CB-4E83-B516-8FA19D40D529}
 		{C830416A-5E55-45AA-BED8-BBABF93D463E} = {5F529DF4-E894-448D-B945-7CF6B83CFA6D}
 		{449266BC-F5D4-4B5B-98A2-E2C7F76D0949} = {5F529DF4-E894-448D-B945-7CF6B83CFA6D}
+		{9C30D275-EA69-42FA-B375-49A0C5EAA1EF} = {CE286405-26CB-4E83-B516-8FA19D40D529}
 	EndGlobalSection
 EndGlobal
