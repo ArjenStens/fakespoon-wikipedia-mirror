@@ -39,15 +39,7 @@ Administration at the University of Dhaka.[^16]
 
 ## References
 
-```{=mediawiki}
-{{reflist}}
-```
-```{=mediawiki}
-{{Authority  control}}
-```
-```{=mediawiki}
-{{DEFAULTSORT:Rab, Abdur}}
-```
+{{Authority  control}}{{DEFAULTSORT:Rab, Abdur}}
 [Category:Living people](Category:Living_people "wikilink")
 [Category:University of Dhaka
 alumni](Category:University_of_Dhaka_alumni "wikilink")
@@ -58,64 +50,34 @@ Dhaka](Category:Academic_staff_of_the_University_of_Dhaka "wikilink")
 [Category:Year of birth missing (living
 people)](Category:Year_of_birth_missing_(living_people) "wikilink")
 
-[^1]:
-    ```{=mediawiki}
-    {{Cite web |date=2022-11-30 |title=We put stress on university-industry links |url=https://www.tbsnews.net/bangladesh/education/we-put-stress-university-industry-links-542138 |access-date=2024-02-01 |website=The Business Standard |language=en}}
-    ```
+[^1]: [We put stress on university-industry links, 2022-11-30, https://www.tbsnews.net/bangladesh/education/we-put-stress-university-industry-links-542138, The Business Standard, , en]
 
-[^2]:
-    ```{=mediawiki}
-    {{Cite web |date=2023-11-30 |title=In conversation with leaders of private university education in Bangladesh |url=https://www.thedailystar.net/supplements/private-universities-paving-the-path-the-bangladeshi-youth/news/conversation-leaders-private-university-education-bangladesh-3482371 |access-date=2024-02-01 |website=The Daily Star |language=en}}
-    ```
+[^2]: [In conversation with leaders of private university education in Bangladesh, 2023-11-30, https://www.thedailystar.net/supplements/private-universities-paving-the-path-the-bangladeshi-youth/news/conversation-leaders-private-university-education-bangladesh-3482371, The Daily Star, , en]
 
-[^3]:
-    ```{=mediawiki}
-    {{Cite web |title=Prof Dr Abdur Rab |url=https://iubat.edu/prof-dr-abdur-rab/ |access-date=2024-02-01 |language=en-US}}
-    ```
+[^3]: [Prof Dr Abdur Rab, , https://iubat.edu/prof-dr-abdur-rab/, , , en-US]
 
-[^4]:
-    ```{=mediawiki}
-    {{Cite web |date=2 February 2022 |title=Prof Abdur Rab reappointed as IUBAT VC |url=https://www.daily-sun.com/printversion/details/603277 |access-date=2024-02-01 |website=daily-sun |language=en}}
-    ```
+[^4]: [Prof Abdur Rab reappointed as IUBAT VC, 2 February 2022, https://www.daily-sun.com/printversion/details/603277, daily-sun, , en]
 
-[^5]:
-    ```{=mediawiki}
-    {{Cite web |title=Prof. Dr. Abdur Rab has been Designated as the Vice-Chancellor of IUBAT |url=https://iubat.edu/prof-dr-abdur-rab-has-been-designated-as-the-vice-chancellor-of-iubat/ |access-date=2024-02-01 |language=en-US}}
-    ```
+[^5]: [Prof. Dr. Abdur Rab has been Designated as the Vice-Chancellor of IUBAT, , https://iubat.edu/prof-dr-abdur-rab-has-been-designated-as-the-vice-chancellor-of-iubat/, , , en-US]
 
 [^6]:
 
-[^7]: Helllo
+[^7]:
 
-[^8]:
-    ```{=mediawiki}
-    {{Cite web |date=2022-02-02 |title=Prof Dr Abdur Rab Miah reappointed as IUBAT Vice-Chancellor |url=https://www.tbsnews.net/bangladesh/education/prof-dr-abdur-rab-miah-reappointed-iubat-vice-chancellor-365506 |access-date=2024-02-01 |website=The Business Standard |language=en}}
-    ```
+[^8]: [Prof Dr Abdur Rab Miah reappointed as IUBAT Vice-Chancellor, 2022-02-02, https://www.tbsnews.net/bangladesh/education/prof-dr-abdur-rab-miah-reappointed-iubat-vice-chancellor-365506, The Business Standard, , en]
 
 [^9]:
 
 [^10]:
 
-[^11]:
-    ```{=mediawiki}
-    {{Cite web |date=2022-02-02 |title=IUBAT reappoints Prof. Dr Abdur Rab Miah as VC |url=https://www.thedailystar.net/shout/bulletin-board/news/iubat-reappoints-prof-dr-abdur-rab-miah-vc-2952741 |access-date=2024-02-01 |website=The Daily Star |language=en}}
-    ```
+[^11]: [IUBAT reappoints Prof. Dr Abdur Rab Miah as VC, 2022-02-02, https://www.thedailystar.net/shout/bulletin-board/news/iubat-reappoints-prof-dr-abdur-rab-miah-vc-2952741, The Daily Star, , en]
 
 [^12]:
 
-[^13]:
-    ```{=mediawiki}
-    {{Cite web |title=Technical Committee |url=https://icbm.bracu.ac.bd/technical-committee |access-date=1 February 2024 |website=[[BRAC University]]}}
-    ```
+[^13]: [Technical Committee, , https://icbm.bracu.ac.bd/technical-committee, [[BRAC University]], , ]
 
 [^14]:
 
-[^15]:
-    ```{=mediawiki}
-    {{Cite web |title=Advisory Panel – BSPUA |url=https://bspua.org/advisory-panel/ |access-date=2024-02-01 |language=en-US}}
-    ```
+[^15]: [Advisory Panel – BSPUA, , https://bspua.org/advisory-panel/, , , en-US]
 
-[^16]:
-    ```{=mediawiki}
-    {{Cite web |title=Advisory Board |url=https://iba-du.edu/upload_images/Advisory%20board.html |access-date=2024-02-01 |website=Institute of Business Administration at the University of Dhaka}}
-    ```
+[^16]: [Advisory Board, , https://iba-du.edu/upload_images/Advisory%20board.html, Institute of Business Administration at the University of Dhaka, , ]

@@ -10,8 +10,7 @@ public static class WikiConverter
     {
         var pandoc = new PandocEngine("/opt/homebrew/bin/pandoc"); // TODO: include in project
         var markdown = await pandoc.ConvertToText<MediaWikiIn, PandocMdOut>(wikiText);
-
-
+        
         return markdown;
     }
     
@@ -20,28 +19,29 @@ public static class WikiConverter
         // Force remove some of the templates already
         wikiTextInMarkdown = wikiTextInMarkdown.Replace("{=mediawiki}", "");
         wikiTextInMarkdown = wikiTextInMarkdown.Replace("{{reflist}}", "");
+        wikiTextInMarkdown = wikiTextInMarkdown.Replace("```\n\n```", "");
         
         //
         var templates = await GetAllTemplates(wikiTextInMarkdown);
         
         foreach (var result in templates)
         {
-
+            wikiTextInMarkdown = wikiTextInMarkdown.Replace(result.Match, result.Raw);
+            
             if (result.Template.GetType() == typeof(CiteWebTemplate))
             {
                 var template = (CiteWebTemplate)result.Template;
-                wikiTextInMarkdown = wikiTextInMarkdown.Replace(result.Raw, template.ToString());
+                wikiTextInMarkdown = wikiTextInMarkdown.Replace(result.Raw, $" {template}");
                 continue;
             }
         }
         
-
         return wikiTextInMarkdown;
     }
 
     public static async Task<IEnumerable<WikiTemplateResult>> GetAllTemplates(string wikiTextInMarkdown)
     {
-        string pattern = "{{(?<template_value>).*}}";
+        string pattern = "(\\n *```\\n *)(?<template_value>{{.*}})( *\\n *```)";
 
         // Create dictionary to store key-value pairs
         var templates = new List<WikiTemplateResult>();
@@ -52,11 +52,14 @@ public static class WikiConverter
         // Populate dictionary with matched key-value pairs
         foreach (Match match in matches)
         {
-            var result = new WikiTemplateResult()
+            
+            var value = match.Groups[3].Value;
+            var result = new WikiTemplateResult
             {
                 StartPosition = match.Index,
-                Raw = match.Value,
-                Template = await ParseTemplate(match.Value)
+                Raw = value,
+                Template = await ParseTemplate(value),
+                Match = match.Value
             };
             templates.Add(result);
         }
@@ -100,6 +103,7 @@ public static class WikiConverter
         public int StartPosition { get; init; }
         public string Raw { get; init; }
         public IWikiTemplate Template { get; init; } = null;
+        public string Match { get; init; } = null;
     }
     
     public interface IWikiTemplate
@@ -123,34 +127,4 @@ public static class WikiConverter
     }
     
     public class UnknownTemplate : IWikiTemplate{ }
-
-    // public static IEnumerable<XmlExlement> GetXmlElements(string[] elementNames, string text)
-    // {
-    //     // Xml element names
-    //     var elementNamesCapturingGroup = $"({string.Join("|", elementNames)})";
-    //     
-    //     var nonEmptyXmlPattern = $@"\\<{elementNamesCapturingGroup}(?<attributes>[^>]*)\>(?<content>.*?)\\<\/{elementNamesCapturingGroup}\\>";
-    //     var selfClosingXmlPattern = $@"\\<{elementNamesCapturingGroup}(?<attributes>[^>]*)\>";
-    //     
-    //     var xmlPattern = $"{nonEmptyXmlPattern}|{selfClosingXmlPattern}";
-    //     
-    //     Regex regex = new Regex(xmlPattern, RegexOptions.Multiline);
-    //     MatchCollection matches = regex.Matches(text);
-    //
-    //     return matches.Select(match => new XmlExlement()
-    //     {
-    //         StartPosition = match.Index,
-    //         Value = match.Value,
-    //         Attributes = match.Groups["attributes"].Value.Trim(),
-    //         Content = match.Groups["content"].Success ? Regex.Unescape(match.Groups["content"].Value) : null
-    //     });
-    // }
-    //
-    // public class XmlExlement
-    // {
-    //     public int StartPosition { get; init; }
-    //     public string Value { get; init; }
-    //     public string Attributes { get; init; }
-    //     public string? Content { get; init; }
-    // }
 }

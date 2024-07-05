@@ -25,9 +25,10 @@ public class CreateWikiFreediaNoteCommandHandler(
         Logger.LogInformation("page");
 
         var categories = GetCategories(cmd.WikiPage.Revision.Text.Value);
-        var markdownContent = GetMarkdownContent(cmd.WikiPage.Revision.Text.Value);
+        
+        var markdownContent = await WikiConverter.ToWikiArticle(cmd.WikiPage.Revision.Text.Value);
 
-        markdownContent += $"\n [View on legacy Wikipedia]({WikiPediaUtils.UrlFromTitle(cmd.WikiPage.Title)})";
+        markdownContent += $"\n View this article on [legacy Wikipedia]({WikiPediaUtils.UrlFromTitle(cmd.WikiPage.Title)})";
         var note = new NostrEvent
         {
             Kind = Kind.WikiArticle,

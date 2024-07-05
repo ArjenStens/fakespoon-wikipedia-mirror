@@ -25,12 +25,17 @@
     &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.GetXmlElements_Should_ProvideListOfAllElements&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7afa5f57_002D41eb_002D48df_002Da4e5_002Dfa28ca6d0b5e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RenderWikiTemplates_Should_ProduceValidArticle #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.RenderWikiTemplates_Should_ProduceValidArticle&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c53d3ce7_002D781d_002D45a0_002Da944_002Dca527e18f501/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RenderWikiTemplates_Should_ProduceValidArticle" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.RenderWikiTemplates_Should_ProduceValidArticle&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=da05f39a_002Dd3a2_002D421b_002Dadb9_002D60e2d5f306f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RenderWikiTemplates_Should_ProduceValidArticle #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=da05f39a_002Dd3a2_002D421b_002Dadb9_002D60e2d5f306f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RenderWikiTemplates_Should_ProduceValidArticle #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::9C30D275-EA69-42FA-B375-49A0C5EAA1EF::net8.0::FakeSpoon.Wikipedia.Mirror.Domain.Tests.WikiConverterTests.RenderWikiTemplates_Should_ProduceValidArticle&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
