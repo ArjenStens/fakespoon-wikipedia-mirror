@@ -7,7 +7,9 @@ using FakeSpoon.Lib.NostrClient.Relay;
 using FakeSpoon.Lib.NostrClient.Relay.Messages.Requests;
 using FakeSpoon.Lib.NostrClient.Relay.WebSocket;
 using FakeSpoon.Lib.NostrClient.Utils;
+using FakeSpoon.Wikipedia.Mirror.Domain.Options;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;
@@ -20,23 +22,21 @@ public class PubCommand : ICommand
 public class PubCommandHandler(
     ILogger<PubCommand> Logger,
     ICommandHandler<SendEventToRelaysCommand> handler,
-    ILogger<SingleRelayClient> relayLogger
-    ) : ICommandHandler<PubCommand>
+    ILogger<SingleRelayClient> relayLogger,
+    IOptions<NostrOptions> config) : ICommandHandler<PubCommand>
 {
     public async Task Execute(PubCommand cmd)
     {
-        var privatekey = Privatekey.FromBech32("[redacted]");
+        var privatekey = Privatekey.FromBech32(config.Value.Nsec);
         var pubkey = privatekey.DerivePublicKey();
 
         cmd.Event.Pubkey = pubkey;
         cmd.Event.Sign(privatekey);
 
-        // await handler.Execute(new(cmd.Event));
-
         var relays = new[]
         {
-            new Uri("wss://nos.lol/"),
-            // new Uri("wss://relay.damus.io/")
+            // new Uri("wss://nos.lol/"),
+            new Uri("wss://relay.damus.io/")
         };
 
         // using var multiClient = new MultiRelayClient(relayLogger);

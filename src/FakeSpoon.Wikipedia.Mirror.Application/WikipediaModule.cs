@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
@@ -25,7 +26,8 @@ public class WikipediaModule : ICarterModule
                 var xmlDoc = new XmlDocument();
                 try
                 {
-                    xmlDoc.LoadXml(request.Dump);
+                    var xmlString = request.Dump.DecodeBase64();
+                    xmlDoc.LoadXml(xmlString);
                     await handler.Execute(new  (){WikipediaDump = xmlDoc} );
                 }
                 catch (XmlException ex)
@@ -52,6 +54,7 @@ public class WikipediaModule : ICarterModule
 
 public class AddDumpRequest
 {
+    [Base64String]
     public string Dump { get; set; }
 }
 public class WikipediaDumpRequest

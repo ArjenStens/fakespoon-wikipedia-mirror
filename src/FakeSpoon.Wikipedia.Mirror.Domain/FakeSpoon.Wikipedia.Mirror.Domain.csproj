@@ -9,6 +9,7 @@
     <ItemGroup>
       <Folder Include="Events\" />
       <Folder Include="Queries\" />
+      <Folder Include="WikiTextToMdConverter\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,8 +19,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.37.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Pandoc" Version="3.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="FakeSpoon.Wikipedia.Mirror.Domain">
+        <HintPath>..\..\tests\FakeSpoon.Wikipedia.Mirror.Domain.Tests\bin\Debug\net8.0\FakeSpoon.Wikipedia.Mirror.Domain.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

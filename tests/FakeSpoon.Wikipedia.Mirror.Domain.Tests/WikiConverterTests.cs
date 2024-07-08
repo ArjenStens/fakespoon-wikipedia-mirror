@@ -1,6 +1,4 @@
-﻿
-
-using FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
+﻿using FakeSpoon.Wikipedia.Mirror.Domain.Utils;
 using FluentAssertions;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Tests;

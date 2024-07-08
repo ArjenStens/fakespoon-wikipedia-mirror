@@ -15,18 +15,30 @@ public class PostWikipediaDumpCommandHandler(
     ILogger<PostWikipediaDumpCommandHandler> Logger,
     ICommandHandler<CreateWikiFreediaNoteCommand> handler) : ICommandHandler<PostWikipediaDumpCommand>
 {
-    public Task Execute(PostWikipediaDumpCommand cmd)
+    public async Task Execute(PostWikipediaDumpCommand cmd)
     {
         Logger.LogInformation(cmd.WikipediaDump.Value);
 
-        var pages = ExtractPages(cmd.WikipediaDump);
+        var wikiPages = ExtractPages(cmd.WikipediaDump);
+        var pagesMinusRedirects = wikiPages.Where(p => !p.IsRedirect);
 
+        foreach (var page in pagesMinusRedirects)
+        {
+            await ProcessPage(page);
+        }
+        
+    }
 
-        var tasks = pages
-            // .Take(1) // temp for testing
-            .Select(page => handler.Execute(new() { WikiPage = page }))
-            .ToList();
-        return Task.WhenAll(tasks);
+    private async Task ProcessPage(WikiPage page)
+    {
+        try
+        {
+            await handler.Execute(new() { WikiPage = page });
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error processing page {}", page.Title);
+        }
     }
 
     private IEnumerable<WikiPage> ExtractPages(XmlDocument wikipediaDump)

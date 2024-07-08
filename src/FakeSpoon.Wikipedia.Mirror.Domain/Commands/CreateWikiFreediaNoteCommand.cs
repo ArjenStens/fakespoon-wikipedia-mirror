@@ -4,10 +4,12 @@ using FakeSpoon.Lib.NostrClient.Events;
 using FakeSpoon.Lib.NostrClient.Events.Tags;
 using FakeSpoon.Lib.NostrClient.Events.Values;
 using FakeSpoon.Wikipedia.Mirror.Domain.Nostr.Models.Tags;
+using FakeSpoon.Wikipedia.Mirror.Domain.Utils;
 using FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Models;
 using FakeSpoon.Wikipedia.Mirror.Domain.Wikipedia.Utils;
 using Microsoft.Extensions.Logging;
+using WikiConverter = FakeSpoon.Wikipedia.Mirror.Domain.Utils.WikiConverter;
 
 namespace FakeSpoon.Wikipedia.Mirror.Domain.Commands;
 
@@ -28,13 +30,13 @@ public class CreateWikiFreediaNoteCommandHandler(
         
         var markdownContent = await WikiConverter.ToWikiArticle(cmd.WikiPage.Revision.Text.Value);
 
-        markdownContent += $"\n View this article on [legacy Wikipedia]({WikiPediaUtils.UrlFromTitle(cmd.WikiPage.Title)})";
+        markdownContent += $"\n View this article on [legacy Wikipedia]({WikiUtils.UrlFromTitle(cmd.WikiPage.Title)})";
         var note = new NostrEvent
         {
             Kind = Kind.WikiArticle,
             Tags = new INostrTag[]
             {
-                new IdentifierTag(WikiFreediaUtils.AsTopicName(cmd.WikiPage.Title)),
+                new IdentifierTag(WikiUtils.AsTopicName(cmd.WikiPage.Title)),
                 new TitleTag(cmd.WikiPage.Title),
                 new CategoriesTag(categories),
                 new ClientTag("FakeSpoon-WikiMirror", new PublicKeyValue("bla"), "fakespoon-wiki-mirror", null)

@@ -1,5 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using FakeSpoon.Lib.NostrClient.Keys;
+using FakeSpoon.Wikipedia.Mirror.Domain.Options;
 using FakeSpoon.Wikipedia.Mirror.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services
         options.SerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
     })
     .AddCustomServices(builder);
+
 
 var app = builder.Build();
 

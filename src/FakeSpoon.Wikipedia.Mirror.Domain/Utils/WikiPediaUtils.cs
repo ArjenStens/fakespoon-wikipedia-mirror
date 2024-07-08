@@ -1,6 +1,6 @@
-namespace FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
+namespace FakeSpoon.Wikipedia.Mirror.Domain.Utils;
 
-public static class WikiFreediaUtils
+public static class WikiUtils
 {
     public static string AsTopicName(string input) {
         return input.ToLower()
@@ -9,5 +9,10 @@ public static class WikiFreediaUtils
             .Replace("(", "")
             .Replace(")", "")
             .Replace(" ", "-");
+    }
+    
+    public static string UrlFromTitle(string title)
+    {
+        return $"https://en.wikipedia.org/wiki/{title.Replace(" ", "_")}";
     }
 }

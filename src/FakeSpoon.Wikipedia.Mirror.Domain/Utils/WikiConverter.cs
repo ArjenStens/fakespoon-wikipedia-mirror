@@ -1,19 +1,108 @@
 using System.Text.RegularExpressions;
+using Markdig;
+using Markdig.Renderers;
+using Markdig.Renderers.Normalize;
+using Markdig.Renderers.Roundtrip;
+using Markdig.Syntax;
+using Markdig.Syntax.Inlines;
 using Pandoc;
 
-namespace FakeSpoon.Wikipedia.Mirror.Domain.WikiFreedia.Utils;
+namespace FakeSpoon.Wikipedia.Mirror.Domain.Utils;
 
 public static class WikiConverter
 {
 
     public static async Task<string> ToWikiArticle(string wikiText)
     {
-        var pandoc = new PandocEngine("/opt/homebrew/bin/pandoc"); // TODO: include in project
-        var markdown = await pandoc.ConvertToText<MediaWikiIn, PandocMdOut>(wikiText);
+        if (wikiText.StartsWith("{{Short description|Ratio of how much light is reflected back from a body}}"))
+        {
+            Console.WriteLine(wikiText);
+        }
         
-        return markdown;
+        var pandoc = new PandocEngine("/opt/homebrew/bin/pandoc"); // TODO: include in project
+        var markdownPlain = await pandoc.ConvertToText<MediaWikiIn, PandocMdOut>(wikiText, outOptions: new ()
+        {
+            Wrap = Wrap.Preserve,
+        });
+
+        var parsedMd = Markdown.Parse(markdownPlain);
+        var codeBlocks = GetCodeBlocks(parsedMd);
+        
+        foreach (var block in codeBlocks)
+        {
+            // var lsw = new StringWriter();
+            // new NormalizeRenderer(lsw).Write(block);
+            // var text = lsw.ToString();
+            if(block.GetType() == typeof(FencedCodeBlock) || block.GetType() == typeof(CodeBlock) )
+            {
+                var b = (CodeBlock)block;
+                b.Parent.Remove(b);
+                
+            } else if(block.GetType() == typeof(CodeInline))
+            {
+                var inline = (CodeInline)block;
+                inline.Remove();
+            }
+        }
+            
+        var sw = new StringWriter();
+        new NormalizeRenderer(sw).Write(parsedMd);
+        var outputMarkdown = sw.ToString();
+
+        outputMarkdown = outputMarkdown.Replace("{=mediawiki}", "");
+        
+        return outputMarkdown;
     }
-    
+
+    private static List<MarkdownObject> GetCodeBlocks(ContainerBlock containerBlock)
+    {
+        var result = new List<MarkdownObject>();
+        foreach (var block in containerBlock)
+        {
+            if (block.GetType() == typeof(FencedCodeBlock) || block.GetType() == typeof(CodeBlock) || block.GetType() == typeof(CodeInline))
+            {
+                result.Add(block);
+            }
+            else if (block.GetType() == typeof(LeafBlock) || block.GetType().IsSubclassOf(typeof(LeafBlock)))
+            {
+                var leafBlock = (LeafBlock)block;
+                var inlineCodeBlocks = GetInlineCodeBlocks(leafBlock.Inline);
+                result.AddRange(inlineCodeBlocks);
+            }
+            else if (block.GetType() == typeof(ContainerBlock) || block.GetType().IsSubclassOf(typeof(ContainerBlock)))
+            {
+                var innerCodeBlocks = GetCodeBlocks((ContainerBlock)block);
+                result.AddRange(innerCodeBlocks);
+            }
+            else
+            {
+                Console.WriteLine(block.GetType());
+            }
+        }
+
+        return result;
+    }
+
+    private static IEnumerable<MarkdownObject> GetInlineCodeBlocks(ContainerInline? leafBlockInline)
+    {
+        var result = new List<Inline>();
+
+        if (leafBlockInline == null)
+        {
+            return result;
+        }
+        
+        foreach (var inline in leafBlockInline)
+        {
+            if (inline.GetType() == typeof(CodeInline) || inline.GetType() == typeof(CodeInline))
+            {
+                result.Add(inline);
+            }
+        }
+
+        return result;
+    }
+
     public static async Task<string> RenderWikiTemplates(string wikiTextInMarkdown)
     {
         // Force remove some of the templates already
@@ -52,7 +141,6 @@ public static class WikiConverter
         // Populate dictionary with matched key-value pairs
         foreach (Match match in matches)
         {
-            
             var value = match.Groups[3].Value;
             var result = new WikiTemplateResult
             {

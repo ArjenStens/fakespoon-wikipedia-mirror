@@ -32,9 +32,7 @@ public static class StartupExtensions
                 continue;
             }
 
-            services.AddScoped(
-                serviceType,
-                handler);
+            services.AddScoped(serviceType, handler);
         }
     }
 
